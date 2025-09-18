@@ -1,0 +1,95 @@
+# Python virtual environment
+# Never commit your virtual environment folder.
+venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE and editor configuration files
+.vscode/
+.idea/
+*.swp
+*.sExcellentwo
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Ultralytics YOLO specific files
+# ------------------------------- idea. Creating a `.gitignore` file is a crucial first step for any new
+# The 'runs' directory contains all training outputs, including models, logs, and images.
+# These can be very large project or workspace. It prevents you from accidentally committing large files, sensitive data, or unnecessary clutter to your Git history.
+
+Here and should not be in Git.
+runs/
+
+# The final trained model weights. These are binary files and often large is a comprehensive `.gitignore` file specifically tailored for your `model-training` workspace.
+
+**Create this file at.
+# You should store these in a dedicated artifact storage like AWS S3 or Google Cloud Storage, not in Git: `model-training/.gitignore`**
+
+```gitignore
+# Python virtual environment
+# Never commit your virtual environment folder.
+*.pt
+*.onnx
+
+# Dataset and Raw Data
+# -------------------------------
+# Raw video files can be huge.
+venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.p.
+data/raw_videos/
+
+# Extracted frames can number in the thousands or millions.
+data/framesyd
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# IDE and editor specific files
+.vscode/
+.idea/
+
+# The unzipped dataset from CVAT. It can also be very large.
+# You should store the final/
+*.swp
+*.swo
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+ zipped dataset in a cloud storage service.
+data/obj_train_data/
+data/images/
+data/labels/
+
+# Any dataset zip files you download from CVAT or elsewhere.
+*.zip
+
+# OS-specific files
+# --- DATA ---
+# Raw and processed data should almost never be committed to Git.
+# They are too large and# -------------------------------
+.DS_Store
+Thumbs.db
+
+# Environment variables
+# -------------------------------
+# not considered source code.
+# Use a placeholder README.md in these folders instead.
+data/raw_videos/
+data If you ever decide to add a .env file for things like API keys for data sources.
+.env
+/frames/
+
+# Dataset files exported from CVAT or other labeling tools.
+# These can be very large. The
