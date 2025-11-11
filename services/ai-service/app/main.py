@@ -1,6 +1,17 @@
 from fastapi import FastAPI, status
 from pydantic import BaseModel
-import random # We'll use this to simulate detection for now
+from kafka import KafkaProducer
+import json
+import os
+
+# --- Kafka Producer Setup ---
+KAFKA_BROKER_URL = os.environ.get("KAFKA_BOOTSTRAP_SERVERS", "localhost:9092")
+DETECTION_TOPIC = "detection-events"
+
+producer = KafkaProducer(
+    bootstrap_servers=KAFKA_BROKER_URL,
+    value_serializer=lambda v: json.dumps(v).encode('utf-8') # Serialize JSON to bytes
+)
 
 app = FastAPI(title="Drowning Detection AI Service")
 
@@ -21,16 +32,17 @@ def analyze_stream(request: StreamAnalysisRequest):
     """
     print(f"Analyzing stream for camera: {request.camera_id} at {request.stream_url}")
     
-    # --- MOCK AI LOGIC ---
-    # Simulate a 10% chance of detecting a drowning event
-    drowning_detected = random.random() < 0.1 
-    confidence = 0.0
     if drowning_detected:
-        confidence = round(random.uniform(0.85, 0.98), 2)
-        print(f"!!! DROWNING DETECTED for camera {request.camera_id} with confidence {confidence} !!!")
-    # --- END MOCK AI LOGIC ---
+        print(f"!!! DROWNING DETECTED for camera {request.camera_id} - publishing to Kafka !!!")
+        event_data = {
+            "camera_id": request.camera_id,
+            "confidence": highest_confidence,
+            "stream_url": request.stream_url
+            # Add a timestamp here
+        }
+        # Publish the event to the 'detection-events' topic
+        producer.send(DETECTION_TOPIC, value=event_data)
+        producer.flush() # Ensure message is sent
     
-    return {
-        "drowning_detected": drowning_detected,
-        "confidence": confidence
-    }
+    # The endpoint can still return a simple confirmation
+    return {"status": "analysis_complete", "detected": drowning_detected}

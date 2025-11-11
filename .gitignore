@@ -1,6 +1,100 @@
-cvlib/__pycache__/object_detection.cpython-310.pyc
-cvlib/__pycache__/object_detection.cpython-37.pyc
-cvlib/__pycache__
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
 env/
-cvlib/resources
-.vscode
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.egg-info/
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+client.properties
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Models and data
+*.pth
+*.pkl
+*.h5
+*.onnx
+models/
+data/
+videos/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn-integrity
+
+# Docker
+.dockerignore
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# Kubernetes
+*.kubeconfig
+
+# Credentials and secrets
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Legacy
+cvlib/__pycache__/
+cvlib/resources/
